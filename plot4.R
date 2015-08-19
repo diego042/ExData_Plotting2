@@ -20,6 +20,7 @@ combustionNEI <- NEI[NEI$SCC %in% combustionSCC,]
 #aggregate the data in the desired format
 totalemissions <- aggregate(Emissions ~ year,combustionNEI, sum)
 
+#make the plot
 png(file="plot4.png",width=480,height=480,)
 barplot(totalemissions$Emissions,
         names.arg=totalemissions$year,
