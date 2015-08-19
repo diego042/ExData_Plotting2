@@ -22,9 +22,8 @@ balt_NEI <- NEI[NEI$fips=="24510",]
 #aggregate the data in the desired format
 totalemissions <- aggregate(Emissions ~ year,balt_NEI, sum)
 
+#make the plot using the ggplot2 library and export the png file
 png(file="plot3.png",width=900,height=480,)
-
-#make the plot using the ggplot2 library
 plot3 <- ggplot(balt_NEI,aes(factor(year),Emissions,fill=type)) +
         geom_bar(stat="identity") +
         theme_bw() + guides(fill=FALSE)+
