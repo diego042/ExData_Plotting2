@@ -16,7 +16,7 @@ totalemissions <- aggregate(Emissions ~ year,NEI, sum)
 
 png(file="plot1.png",width=480,height=480,)
 barplot(totalemissions$Emissions,
-        totalemissions$year,
+        names.arg=totalemissions$year,
         xlab="Year",
         ylab="PM2.5 Emissions (Tons)",
         main="Total PM2.5 Emissions From All US Sources"
