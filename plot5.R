@@ -13,7 +13,7 @@ SCC <- readRDS("Source_Classification_Code.rds")
 #subset only the data from Baltimore
 balt_NEI <- NEI[NEI$fips=="24510",]
 
-#subset only the data from coal vehicle sources
+#subset only the data from vehicle sources
 vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)
 vehiclesSCC <- SCC[vehicles,]$SCC
 vehiclesNEI <- balt_NEI[balt_NEI$SCC %in% vehiclesSCC,]
@@ -21,6 +21,7 @@ vehiclesNEI <- balt_NEI[balt_NEI$SCC %in% vehiclesSCC,]
 #aggregate the data in the desired format
 totalemissions <- aggregate(Emissions ~ year,vehiclesNEI, sum)
 
+#make the plot
 png(file="plot5.png",width=480,height=480,)
 barplot(totalemissions$Emissions,
         names.arg=totalemissions$year,
