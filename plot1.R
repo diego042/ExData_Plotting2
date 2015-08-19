@@ -1,5 +1,8 @@
 # Course project 2 - exploratory data analysis
 
+#check if the files were downloaded
+source("download_files.R")
+
 ## reading the data
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
