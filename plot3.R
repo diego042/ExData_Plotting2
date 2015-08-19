@@ -19,12 +19,12 @@ SCC <- readRDS("Source_Classification_Code.rds")
 #subset only the data from Baltimore
 balt_NEI <- NEI[NEI$fips=="24510",]
 
-
 #aggregate the data in the desired format
 totalemissions <- aggregate(Emissions ~ year,balt_NEI, sum)
 
 png(file="plot3.png",width=900,height=480,)
 
+#make the plot using the ggplot2 library
 plot3 <- ggplot(balt_NEI,aes(factor(year),Emissions,fill=type)) +
         geom_bar(stat="identity") +
         theme_bw() + guides(fill=FALSE)+
@@ -32,5 +32,4 @@ plot3 <- ggplot(balt_NEI,aes(factor(year),Emissions,fill=type)) +
         labs(x="Year", y="Total PM 2.5 Emission (Tons)") + 
         labs(title="Total PM 2.5 Emissions, Baltimore City 1999-2008 by Source Type")
 print(plot3)
-
 dev.off()
